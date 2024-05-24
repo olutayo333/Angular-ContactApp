@@ -1,0 +1,54 @@
+<div class="container-fluid mt-lg-5 ">
+    <div class="row d-flex mt-lg-5">
+        <div class="col-lg-6 shadow d-flex text-center ms-lg-5  justify-content-center mt-5 py-5 rounded" id="bgg1">
+            <div class="col-lg-7 px-3 ">
+                <h2 style="letter-spacing:4px;" class="text-dark mb-4"> <u>Contact Form </u></h2>
+                <input type="text" class="form-control my-2" placeholder="First Name" [(ngModel)]="firstName">
+                <input type="text" class="form-control my-2" placeholder="Last Name" [(ngModel)]="lastName">
+                <input type="number" class="form-control my-2" placeholder="Phone Number" [(ngModel)]="phoneNumber">
+                <input type="email" class="form-control my-2" placeholder="Email" [(ngModel)]="email">
+                 <button class="btn btn-lg btn-outline-dark w-100 my-3" (click)="register()"> <b>Add Contact</b></button>
+
+            </div>
+        </div>
+        <div class="col-lg-5 shadow d-flex text-center me-lg-5 justify-content-center mt-5 py-5 rounded" id="bgg">
+            <div class="row my-5 mx-auto ms-0 me-0 "> 
+                <p *ngIf="contactArr.length <= 0 ">
+                   <b> No Contacts Yet !</b>
+                </p>
+                <div class="" *ngFor="let i = index; let each of contactArr">
+                    <div class="col-lg-12 col-12 " id="ancor">
+                        <!-- <button routerLink="contact/detail/{{i}}" class="btn btn-small"><p class="ms-1 text-center text-sencondary rounded"><b>{{each.FN}} {{each.LN}} </b></p></button> -->
+                        <a routerLink="contact/detail/{{i}}" class="ms-1 text-center text-sencondary rounded px-3 py-3"> <b>{{each.FN}} {{each.LN}} </b> </a> 
+                        <button (click)="openModal(i) " class="btn btn-outline-primary mx-1" > Edit</button> 
+                        <button (click)="delete(i)" class="btn btn-outline-danger" > Delete</button> <hr>
+                       
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+       
+          <!-- MODAL ----- -->
+    </div>
+            <div class="modal" id="myModal" >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title  me-5" id="exampleModalLabel">Edit Contact</h2>
+                  <span class="ms-5"> <button class="btn btn-outline-danger float-end " (click)="closeModal()" > <span aria-hidden="true">&times;</span></button> </span>
+                </div>
+                <div class="modal-body">
+                  <input class="form-control my-2" type="text" value={{firstName2}} [(ngModel)]="editfirstName" >
+                  <input class="form-control my-2" type="text" value={{lastName2}} [(ngModel)]="editlastName">
+                  <input class="form-control my-2" type="number" value={{phoneNumber2}} [(ngModel)]="editphoneNumber" >
+                  <input class="form-control my-2" type="email" value={{email2}} [(ngModel)]="editemail" >
+                </div>
+                <div class="modal-footer">
+                  <button (click)="closeModal()" type="button" class="btn btn-outline-danger" >Close</button>
+                  <button type="button" (click)="edit()" class="btn btn-primary" disabled="!editfirstName || !editlastName || !editphoneNumber || !editemail">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>

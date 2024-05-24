@@ -1,0 +1,11 @@
+#bgg{
+    background-color: white;
+    border-left: 5px solid black;
+}
+#bgg1{
+    border-right: 5px solid black;
+}
+#ancor a{
+    text-decoration: none;
+    color: rgb(22, 24, 26);
+}
